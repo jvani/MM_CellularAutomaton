@@ -27,6 +27,7 @@ update_count = ''
 
 occ_total = 0
 deadcars_tot = 0
+speed_total = 0
 
 
 while simulation.running:
@@ -37,11 +38,13 @@ while simulation.running:
     dt = clock.get_time()
     simulation.update(dt)
 
+    # Write variable to CSV every 300 timesteps (5 mins).
     if len(representation.infoDisplayer.text) > 1:
         if update_count != representation.infoDisplayer.text[2]:
             update_count = representation.infoDisplayer.text[2]
             
             occ_total += float(representation.infoDisplayer.text[5].lstrip('occupancy %:'))
+            speed_total += float(representation.infoDisplayer.text[1].lstrip('avg speed: '))
             
             if float(update_count.lstrip('updates: ')) % 300 == 0:
                 row = representation.infoDisplayer.text
@@ -49,12 +52,14 @@ while simulation.running:
                 deadcars = float(row[3].lstrip('dead cars: ')) - deadcars_tot
                 deadcars_tot = float(row[3].lstrip('dead cars: '))
                 avg_occ = occ_total/300
+                avg_speed = speed_total/300
             
                 with open('output.csv', 'a') as f:
                     writer = csv.writer(f)
-                    writer.writerow([deadcars, avg_occ])
+                    writer.writerow([deadcars, avg_occ, avg_speed])
                 
                 occ_total = 0
+                speed_total = 0
 
     representation.draw(dt * simulation.timeFactor)
     pygame.display.flip()

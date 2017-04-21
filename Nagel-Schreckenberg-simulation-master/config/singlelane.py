@@ -22,5 +22,5 @@ l = 50
 speedLimits = []
 
 # traffic generator that is responsible for generating cars each iteration. 
-trafficGenerator = SimpleTrafficGenerator(1) # this generator at each iteration will generate random(0, 2) cars
+trafficGenerator = SimpleTrafficGenerator() # this generator at each iteration will generate random(0, 2) cars
 slowDownProbability, laneChangeProbability = 0.5, 0.0 # slowDownProbability - from NaSch model. laneChangeProbability - from my model
