@@ -7,7 +7,7 @@ class SimpleTrafficGenerator():
 
     def generate(self, road):
         randBinList = lambda n: [random.randint(0,1) for b in range(1, n+1)]
-        amount = random.choice([0,0,0,1])
+        amount = random.choice([0,0,1])
         self.tryGenerate(road, amount)
 
     def tryGenerate(self, road, amount):
