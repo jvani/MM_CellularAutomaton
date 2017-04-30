@@ -23,8 +23,8 @@ class Car:
         self.velocity = self.calcNewVelocity()
 
         if self.velocity > 0 and random.random() <= Car.slowDownProbability:
-            self.velocity -= random.choice([1,1,1,1,2])
-        #self.velocity -= 1
+        #self.velocity -= random.choice([1,1,1,1,2])
+            self.velocity -= 1
 
         self.pos = self.pos[0] + self.velocity, self.pos[1]
         return self.pos

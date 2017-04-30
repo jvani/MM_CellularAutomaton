@@ -3,7 +3,7 @@ from simulation.trafficGenerators import *
 
 maxFps= 40
 #size of the window
-size = width, heigth = 1280, 720
+size = width, heigth = 750, 600
 # in miliseconds
 updateFrame = 500
 
